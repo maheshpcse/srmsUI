@@ -1,13 +1,66 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>SrmsUI</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <title>SrmsUI</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Custom style Files (Component Related) -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/sidemenu.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/google-fonts.css">
+
+    <!-- Font Awesome Icons 5 CSS -->
+    <link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+
+    <!-- Loading-bar CSS -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/loading-bar.css" />
 </head>
+
 <body>
-  <app-root></app-root>
+    <app-root></app-root>
+
+    <!-- Jquery Files -->
+    <script src="./assets/js/jquery-2.1.1.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+
+    <!-- Loading-bar JS -->
+    <script type="text/javascript" src="./assets/js/loading-bar.js"></script>
+
+    <script>
+        jQuery(function ($) {
+            $(".sidebar-dropdown > a").click(function () {
+                $(".sidebar-submenu").slideUp(200);
+                if (
+                    $(this)
+                        .parent()
+                        .hasClass("active")
+                ) {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                        .parent()
+                        .removeClass("active");
+                } else {
+                    $(".sidebar-dropdown").removeClass("active");
+                    $(this)
+                        .next(".sidebar-submenu")
+                        .slideDown(200);
+                    $(this)
+                        .parent()
+                        .addClass("active");
+                }
+            });
+            $("#close-sidebar").click(function () {
+                $(".page-wrapper").removeClass("toggled");
+            });
+            $("#show-sidebar").click(function () {
+                $(".page-wrapper").addClass("toggled");
+            });
+        });
+    </script>
 </body>
+
 </html>
